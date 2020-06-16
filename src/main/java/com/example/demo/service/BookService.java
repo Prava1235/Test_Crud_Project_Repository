@@ -35,7 +35,23 @@ public class BookService {
 		return book;
 
 	}
+	 public Optional<Book> findById(int id) throws BookNotFoundException {
 
+         // TODO Auto-generated method stub
+
+         Optional<Book> book = bookRepository.findById(id);
+
+         if (book.isPresent()) {
+
+                         return book;
+
+         } else {
+
+                         throw new BookNotFoundException("Book Not found");
+
+         }
+
+}
 	
 	/*public Book getBookById(Integer id) throws EmployeeNotFoundException {
 		Book book = (Book) bookRepository.findBookById(id);

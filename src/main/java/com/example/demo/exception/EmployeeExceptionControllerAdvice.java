@@ -18,6 +18,10 @@ public class EmployeeExceptionControllerAdvice extends ResponseEntityExceptionHa
    public ResponseEntity<Object> exception(BookNotFoundException exception) {
       return new ResponseEntity<>("Book not found", HttpStatus.NOT_FOUND);
    }
+   @ExceptionHandler(value = UserNotFoundException.class)
+   public ResponseEntity<Object> exception(UserNotFoundException exception) {
+      return new ResponseEntity<>("Book not found", HttpStatus.NOT_FOUND);
+   }
    @ExceptionHandler(Exception.class)
 	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
 	public @ResponseBody ExceptionResponse handleException(final Exception exception,

@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.net.URI;
 import java.util.List;
 
+import org.apache.commons.logging.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,12 @@ public class BookController {
 	@ApiOperation(value = "Delete the Book By Id", notes = "Provide the Bookid  and  Delete the Book Info for a given Bookid ", response = Book.class)
 	public ResponseEntity<Object> deleteBook(@PathVariable("id") Integer id) {
 		bookService.deleteBook(id);
+		logger.debug("Request {}",id);
+		if (id.equals(8)) {
+			throw new RuntimeException("Opps exceptionraised");
+		}
+		String response="Hi"+id +"Welcome";
+		logger.debug("Response {}",response);
 		logger.info("this is a delete book by id opration");
 		logger.warn("Book id should not be null");
 		logger.error("If Book Id is not there it will throws error message");
